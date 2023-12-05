@@ -6,8 +6,17 @@ public class Program
 
     public Program(string[] lines)
     {
+        var part1Watch = new System.Diagnostics.Stopwatch();
+        var part2Watch = new System.Diagnostics.Stopwatch();
+        part1Watch.Start();
         Part1(lines);
+        part1Watch.Stop();
+        
+        part2Watch.Start();
         Part2(lines);
+        part2Watch.Stop();
+
+        Console.WriteLine($"Running times: Part 1: {part1Watch.Elapsed}, Part 2: {part2Watch.Elapsed}");
     }
 
     public static void Main(string[] args)
