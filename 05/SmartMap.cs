@@ -7,7 +7,7 @@ public class SmartMap
         var interval = new Interval
         {
             SourceFrom = src,
-            SourceTo = src + range,
+            Range = range,
             DestinationFrom = dest
         };
         Maps.Add(interval);
@@ -19,25 +19,10 @@ public class SmartMap
         return match != null ? match.Get(source) : source;
     }
 
-}
-
-public class Interval
-{
-    public long SourceFrom { get; set; }
-    public long SourceTo {get; set; }
-    public long DestinationFrom{get; set;}
-
-    public bool IsMatch(long num)
+    public long GetSource(long destination)
     {
-        if(SourceFrom <= num && num <= SourceTo)
-        {
-            return true;
-        }
-        return false;
+        var match = Maps.FirstOrDefault(m => m.ReverseMatch(destination));
+        return match != null ? match.Reverse(destination) : destination;
     }
 
-    public long Get(long source)
-    {
-        return source - SourceFrom + DestinationFrom;
-    }
 }
