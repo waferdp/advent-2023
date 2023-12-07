@@ -13,8 +13,15 @@ public class Program
         Gears = lines.SelectMany(ParseGears).ToList();
 
         Console.WriteLine($"Parts: {Parts.Count()}, Symbols: {Symbols.Count()}");
-        var notAdjacent = Parts.Where(p => !Symbols.Any(s => p.IsAdjacent(s))).ToList();
-        var adjacent = Parts.Where(p => Symbols.Any(s => p.IsAdjacent(s))).ToList();
+        var notAdjacent = Parts
+            .Where(p => !Symbols
+                .Any(s => p.IsAdjacent(s)))
+            .ToList();
+        
+        var adjacent = Parts
+            .Where(p => Symbols
+                .Any(s => p.IsAdjacent(s)))
+            .ToList();
 
         var sum = adjacent.Select(s => s.Partnumber).Sum();
 
