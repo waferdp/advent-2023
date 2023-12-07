@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Camel", "Camel\Camel.csproj", "{BAFC900B-8902-4D67-8874-6D0CD7777BAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCamel", "TestCamel\TestCamel.csproj", "{50D45E06-E88A-419A-AB12-9825C439092C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAFC900B-8902-4D67-8874-6D0CD7777BAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAFC900B-8902-4D67-8874-6D0CD7777BAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAFC900B-8902-4D67-8874-6D0CD7777BAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAFC900B-8902-4D67-8874-6D0CD7777BAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50D45E06-E88A-419A-AB12-9825C439092C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50D45E06-E88A-419A-AB12-9825C439092C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50D45E06-E88A-419A-AB12-9825C439092C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50D45E06-E88A-419A-AB12-9825C439092C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
