@@ -26,7 +26,7 @@ public class TestHand
     public void TestRanking_BothTwoPairs_BetterCardWins()
     {
         var a = new Hand("KK677 28");
-        var b = new Hand("KTJJT 220");
+        var b = new Hand("KTAAT 220");
         Assert.Equal(1, a.CompareTo(b));
     }
 
@@ -53,10 +53,10 @@ public class TestHand
     }
 
     [Fact]
-    public void TestGetHandType_AAKQJ_OnePair()
+    public void TestGetHandType_AAKQJ_ThreeKind()
     {
         var hand = new Hand("AAKQJ 1");
-        Assert.Equal(HandType.OnePair, hand.GetHandType());
+        Assert.Equal(HandType.ThreeKind, hand.GetHandType());
     }
 
     [Fact]

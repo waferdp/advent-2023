@@ -23,8 +23,9 @@ public class Card
         {
             switch(sign)
             {
+                case 'J': return 1;
                 case 'T': return 10;
-                case 'J': return 11;
+                //case 'J': return 11;
                 case 'Q': return 12;
                 case 'K': return 13;
                 case 'A': return 14;
