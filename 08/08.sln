@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wasteland", "Wasteland\Wasteland.csproj", "{1013DE34-4DC7-4133-98A0-8CE25E9720E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWasteland", "TestWasteland\TestWasteland.csproj", "{B0771875-29B2-42D0-A3E2-84BBC2C1EFD1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1013DE34-4DC7-4133-98A0-8CE25E9720E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1013DE34-4DC7-4133-98A0-8CE25E9720E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1013DE34-4DC7-4133-98A0-8CE25E9720E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1013DE34-4DC7-4133-98A0-8CE25E9720E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0771875-29B2-42D0-A3E2-84BBC2C1EFD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0771875-29B2-42D0-A3E2-84BBC2C1EFD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0771875-29B2-42D0-A3E2-84BBC2C1EFD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0771875-29B2-42D0-A3E2-84BBC2C1EFD1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
