@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mirage", "Mirage\Mirage.csproj", "{A48E3D73-D34D-4A3F-BDC5-8763DB580A49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMirage", "TestMirage\TestMirage.csproj", "{C0EB5C8F-383B-4154-BDD7-6DBC2A794303}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A48E3D73-D34D-4A3F-BDC5-8763DB580A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A48E3D73-D34D-4A3F-BDC5-8763DB580A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A48E3D73-D34D-4A3F-BDC5-8763DB580A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A48E3D73-D34D-4A3F-BDC5-8763DB580A49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0EB5C8F-383B-4154-BDD7-6DBC2A794303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0EB5C8F-383B-4154-BDD7-6DBC2A794303}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0EB5C8F-383B-4154-BDD7-6DBC2A794303}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0EB5C8F-383B-4154-BDD7-6DBC2A794303}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
