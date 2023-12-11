@@ -3,6 +3,10 @@ namespace Pipe;
 public class Matrix2d<T>
 {
     public T DefaultValue { get; private set; }
+    public int MinX { get; private set; } = 0;
+    public int MaxX { get; private set; } = 0;
+    public int MinY { get; private set; } = 0;
+    public int MaxY { get; private set; } = 0;
     private Dictionary<int, Dictionary<int, T>> matrix;
 
     public Matrix2d(List<List<T>> lines, T defaultValue)
@@ -33,6 +37,10 @@ public class Matrix2d<T>
             matrix[y] = new Dictionary<int, T>();
         }
         matrix[y][x] = value;
+        MinX = Math.Min(MinX, x);
+        MaxX = Math.Max(MaxX, x);
+        MinY = Math.Min(MinY, y);
+        MaxY = Math.Max(MaxY, y);
     }
 
     public T Get(int x, int y)
@@ -87,13 +95,13 @@ public class Matrix2d<T>
         return Contains(pos2d.Item1, pos2d.Item2);
     }
 
-    public int MinX { get { return matrix.Values.FirstOrDefault()?.Keys.Min() ?? 0; } }
+    // public int MinX { get { return matrix.Values.FirstOrDefault()?.Keys.Min() ?? 0; } }
 
-    public int MaxX { get { return matrix.Values.FirstOrDefault()?.Keys.Max() ?? 0; } }
+    // public int MaxX { get { return matrix.Values.FirstOrDefault()?.Keys.Max() ?? 0; } }
 
-    public int MinY { get { return matrix.Keys.Min(); } }
+    // public int MinY { get { return matrix.Keys.Min(); } }
 
-    public int MaxY { get { return matrix.Keys.Max(); } }
+    // public int MaxY { get { return matrix.Keys.Max(); } }
 
     public int Width { get { return matrix.Values.FirstOrDefault()?.Count() ?? 0; } }
 

@@ -37,7 +37,6 @@ public class TestMazeRunner
 
         var visited = Matrix2d<string>.Empty(".");
         visited.Set(0, 0, ".");
-        visited.Set(4, 0, ".");
         visited.Set(4, 4, ".");
         foreach (var (x, y) in loop)
         {
