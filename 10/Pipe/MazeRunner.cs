@@ -2,7 +2,7 @@ namespace Pipe;
 
 public class MazeRunner
 {
-    private readonly Matrix2d<(int x, int y)> visited;
+    private Matrix2d<(int x, int y)> visited;
     private readonly Matrix2d<int> distance;
     private readonly PipeGraph graph;
 
@@ -10,7 +10,7 @@ public class MazeRunner
 
     public MazeRunner(string[] lines)
     {
-        visited = Matrix2d<(int x, int y)>.Empty((0, 0));
+        visited = Matrix2d<(int, int)>.Empty((0, 0));
         distance = Matrix2d<int>.Empty(0);
         graph = new PipeGraph(lines);
         queue = new Queue<(int, int)>();
@@ -19,12 +19,18 @@ public class MazeRunner
 
     public void FindAllRoutes()
     {
+        FindRoutes((-1,-1));
+    }
+
+    public void FindRoutes((int x, int y) goal)
+    {
         queue.Enqueue(graph.Animal);
         visited[graph.Animal.x, graph.Animal.y] = (0, 0);
         distance[graph.Animal.x, graph.Animal.y] = 0;
-        while (queue.Any())
+        var pos = graph.Animal;
+        while (queue.Any() && pos != goal)
         {
-            var pos = queue.Dequeue();
+            pos = queue.Dequeue();
             var dist = distance.Get(pos);
             var neighbors = GetNeighbors(pos);
             foreach (var neighbor in neighbors)
@@ -36,15 +42,30 @@ public class MazeRunner
         }
     }
 
+    public List<(int, int)> FindLoop()
+    {
+        var start = graph.Animal;
+        FindAllRoutes();
+        var goal = FindLongestRoutePos();
+        var route = Backtrack(goal, start).Skip(1);
+        visited = Matrix2d<(int, int)>.Empty((0,0));
+        foreach(var pos in route)
+        {
+            visited[pos.x, pos.y] = graph.Animal;
+        }
+        FindRoutes(goal);
+        return route.Concat(Backtrack(goal, start)).ToList();
+    }
+
     public (int x, int y) FindLongestRoutePos()
     {
         var longest = 0;
         var pos = (0, 0);
-        for (var y = distance.MinY; y < distance.MaxY; y++)
+        for (var y = distance.MinY; y <= distance.MaxY; y++)
         {
-            for (var x = distance.MinX; x < distance.MaxX; x++)
+            for (var x = distance.MinX; x <= distance.MaxX; x++)
             {
-                if(distance.Get(x, y) > longest)
+                if (distance.Get(x, y) > longest)
                 {
                     pos = (x, y);
                     longest = distance.Get(x, y);
@@ -52,6 +73,20 @@ public class MazeRunner
             }
         }
         return pos;
+    }
+
+    public List<(int x, int y)> Backtrack((int x, int y) from, (int x, int y) to)
+    {
+        if (!visited.ContainsXY(from) || !visited.ContainsXY(to))
+        {
+            throw new Exception($"Invalid position arguments: {from}, {to}");
+        }
+        var nodes = new List<(int x, int y)>(){from};
+        while (nodes.Last() != to)
+        {
+            nodes.Add(visited.Get(nodes.Last()));
+        }
+        return nodes;
     }
 
     public int FindLongestRouteDistance()

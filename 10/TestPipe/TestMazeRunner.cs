@@ -25,4 +25,24 @@ public class TestMazeRunner
         var distance = mazeRunner.FindLongestRouteDistance();
         Assert.Equal(8, distance);
     }
+
+    [Fact]
+    public void TestFindLoop_TestInput_Correct()
+    {
+        var lines = File.ReadAllLines("test_input.txt");
+        var mazeRunner = new MazeRunner(lines);
+        var expected = new string[] { ".....", ".***.", ".*.*.", ".***.", "....." };
+
+        var loop = mazeRunner.FindLoop();
+
+        var visited = Matrix2d<string>.Empty(".");
+        visited.Set(0, 0, ".");
+        visited.Set(4, 0, ".");
+        visited.Set(4, 4, ".");
+        foreach (var (x, y) in loop)
+        {
+            visited[x, y] = "*";
+        }
+        Assert.Equal(expected, visited.AsStrings(true));
+    }
 }

@@ -99,14 +99,27 @@ public class Matrix2d<T>
 
     public int Height { get { return matrix.Values.Count(); } }
 
-    public string[] AsStrings()
+    public string[] AsStrings(bool includeEmpty = false)
     {
-        return matrix.Keys.Select(y =>
-            string.Join("",
-                matrix[y].Keys.Select(x =>
-                    Get(x, y)).ToList()
-                )
-            ).ToArray();
+        if(!includeEmpty) 
+        {
+            return matrix.Keys
+                .Select(y => string
+                    .Join("", matrix[y].Keys
+                        .Select(x => Get(x, y)).ToList()))
+                .ToArray();
+        }
+        var strings = new List<string>();
+        for(var y = MinY; y <= MaxY; y++)
+        {
+            var row = string.Empty;
+            for(var x = MinX; x <= MaxX; x++)
+            {
+                row += Get(x,y);
+            }
+            strings.Add(row);
+        }
+        return strings.ToArray();
     }
 
     public override string ToString()
