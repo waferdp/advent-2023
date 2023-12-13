@@ -42,6 +42,36 @@ public class TestMazeRunner
         {
             visited[x, y] = "*";
         }
-        Assert.Equal(expected, visited.AsStrings(true));
+        Assert.Equal(expected, visited.AsStrings());
     }
+
+    [Fact]
+    public void TestInsideLoop_TestInput1_Gets1()
+    {
+        var lines = File.ReadAllLines("test_input.txt");
+        var mazeRunner = new MazeRunner(lines);
+        var loop = mazeRunner.FindLoop();
+        var actual = mazeRunner.Graph.NodesInLoop(loop);
+        Assert.Equal(1, actual);
+    }
+
+    [Fact]
+    public void TestInsideLoop_TestInput3_Gets4()
+    {
+        var lines = File.ReadAllLines("test_input3.txt");
+        var mazeRunner = new MazeRunner(lines);
+        var loop = mazeRunner.FindLoop();
+        var actual = mazeRunner.Graph.NodesInLoop(loop);
+        Assert.Equal(4, actual);
+    }    
+
+    [Fact]
+    public void TestInsideLoop_TestInput4_Gets8()
+    {
+        var lines = File.ReadAllLines("test_input4.txt");
+        var mazeRunner = new MazeRunner(lines);
+        var loop = mazeRunner.FindLoop();
+        var actual = mazeRunner.Graph.NodesInLoop(loop);
+        Assert.Equal(8, actual);
+    }    
 }

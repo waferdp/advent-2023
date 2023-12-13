@@ -4,7 +4,7 @@ public class MazeRunner
 {
     private Matrix2d<(int x, int y)> visited;
     private readonly Matrix2d<int> distance;
-    private readonly PipeGraph graph;
+    public PipeGraph Graph { get; private set; }
 
     private Queue<(int, int)> queue;
 
@@ -12,22 +12,22 @@ public class MazeRunner
     {
         visited = Matrix2d<(int, int)>.Empty((0, 0));
         distance = Matrix2d<int>.Empty(0);
-        graph = new PipeGraph(lines);
+        Graph = new PipeGraph(lines);
         queue = new Queue<(int, int)>();
     }
 
 
     public void FindAllRoutes()
     {
-        FindRoutes((-1,-1));
+        FindRoutes((-1, -1));
     }
 
     public void FindRoutes((int x, int y) goal)
     {
-        queue.Enqueue(graph.Animal);
-        visited[graph.Animal.x, graph.Animal.y] = (0, 0);
-        distance[graph.Animal.x, graph.Animal.y] = 0;
-        var pos = graph.Animal;
+        queue.Enqueue(Graph.Animal);
+        visited[Graph.Animal.x, Graph.Animal.y] = (0, 0);
+        distance[Graph.Animal.x, Graph.Animal.y] = 0;
+        var pos = Graph.Animal;
         while (queue.Any() && pos != goal)
         {
             pos = queue.Dequeue();
@@ -44,14 +44,14 @@ public class MazeRunner
 
     public List<(int, int)> FindLoop()
     {
-        var start = graph.Animal;
+        var start = Graph.Animal;
         FindAllRoutes();
         var goal = FindLongestRoutePos();
         var route = Backtrack(goal, start).Skip(1);
-        visited = Matrix2d<(int, int)>.Empty((0,0));
-        foreach(var pos in route)
+        visited = Matrix2d<(int, int)>.Empty((0, 0));
+        foreach (var pos in route)
         {
-            visited[pos.x, pos.y] = graph.Animal;
+            visited[pos.x, pos.y] = Graph.Animal;
         }
         FindRoutes(goal);
         return route.Concat(Backtrack(goal, start)).ToList();
@@ -81,7 +81,7 @@ public class MazeRunner
         {
             throw new Exception($"Invalid position arguments: {from}, {to}");
         }
-        var nodes = new List<(int x, int y)>(){from};
+        var nodes = new List<(int x, int y)>() { from };
         while (nodes.Last() != to)
         {
             nodes.Add(visited.Get(nodes.Last()));
@@ -104,7 +104,7 @@ public class MazeRunner
 
     private List<(int x, int y)> GetNeighbors((int x, int y) pos)
     {
-        return graph
+        return Graph
             .GetAllowedMoves(pos)
             .Select(m => m.Destination)
             .Where(d => !visited.ContainsXY(d))

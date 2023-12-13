@@ -95,35 +95,15 @@ public class Matrix2d<T>
         return Contains(pos2d.Item1, pos2d.Item2);
     }
 
-    // public int MinX { get { return matrix.Values.FirstOrDefault()?.Keys.Min() ?? 0; } }
-
-    // public int MaxX { get { return matrix.Values.FirstOrDefault()?.Keys.Max() ?? 0; } }
-
-    // public int MinY { get { return matrix.Keys.Min(); } }
-
-    // public int MaxY { get { return matrix.Keys.Max(); } }
-
-    public int Width { get { return matrix.Values.FirstOrDefault()?.Count() ?? 0; } }
-
-    public int Height { get { return matrix.Values.Count(); } }
-
-    public string[] AsStrings(bool includeEmpty = false)
+    public string[] AsStrings()
     {
-        if(!includeEmpty) 
-        {
-            return matrix.Keys
-                .Select(y => string
-                    .Join("", matrix[y].Keys
-                        .Select(x => Get(x, y)).ToList()))
-                .ToArray();
-        }
         var strings = new List<string>();
-        for(var y = MinY; y <= MaxY; y++)
+        for (var y = MinY; y <= MaxY; y++)
         {
             var row = string.Empty;
-            for(var x = MinX; x <= MaxX; x++)
+            for (var x = MinX; x <= MaxX; x++)
             {
-                row += Get(x,y);
+                row += Get(x, y);
             }
             strings.Add(row);
         }
